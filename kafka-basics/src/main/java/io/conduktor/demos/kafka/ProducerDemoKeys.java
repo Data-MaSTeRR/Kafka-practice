@@ -18,10 +18,10 @@ public class ProducerDemoKeys {
     public static void main(String[] args) {
         log.info("I am a Kafka Producer!");
 
-        // create Producer Properties - Broker와 연결
+        // create Producer Properties
         Properties properties = new Properties();
 
-        // connect to localhost
+        // connect to localhost - Broker와 연결
         properties.setProperty("bootstrap.servers", "127.0.0.1:9092");
 
         // set producer properties - 바이트로 직렬화
