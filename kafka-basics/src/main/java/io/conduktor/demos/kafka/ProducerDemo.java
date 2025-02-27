@@ -14,7 +14,7 @@ public class ProducerDemo {
     private static final Logger log = LoggerFactory.getLogger(ProducerDemo.class.getSimpleName());
 
     public static void main(String[] args) {
-        log.info("Hello world");
+        log.info("I am a Kafka Producer!");
 
         // create Producer Properties - Broker와 연결
         Properties properties = new Properties();
