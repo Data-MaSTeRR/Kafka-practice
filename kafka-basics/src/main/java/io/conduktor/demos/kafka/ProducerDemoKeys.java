@@ -44,15 +44,12 @@ public class ProducerDemoKeys {
                         new ProducerRecord<>(topic, key, value);
 
                 // send data - 비동기 전송 + 콜백추가 (버퍼의 모든 메시지 전송을 보장하지 않음 -> flush의 필요성)
-                producer.send(producerRecord, new Callback() {
-                    @Override
-                    public void onCompletion(RecordMetadata recordMetadata, Exception e) {
-                        // e -> callback()
-                        if (e == null) { // record was successfully sent
-                            log.info("Key: " + key + " | Partition: " + recordMetadata.partition());
-                        } else {
-                            log.error("Error with producing", e);
-                        }
+                producer.send(producerRecord, (recordMetadata, e) -> {
+                    // e -> callback()
+                    if (e == null) { // record was successfully sent
+                        log.info("Key: " + key + " | Partition: " + recordMetadata.partition());
+                    } else {
+                        log.error("Error with producing", e);
                     }
                 });
             }
