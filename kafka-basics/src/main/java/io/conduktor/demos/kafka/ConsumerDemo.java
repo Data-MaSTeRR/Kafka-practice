@@ -6,6 +6,7 @@ import org.apache.kafka.common.serialization.StringDeserializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Arrays;
 import java.util.Properties;
 
 
@@ -17,6 +18,7 @@ public class ConsumerDemo {
         log.info("I am a Kafka Consumer!");
 
         String groupId = "my-java-application";
+        String topic = "demo-java"
 
         // create Producer Properties
         Properties properties = new Properties();
@@ -34,6 +36,9 @@ public class ConsumerDemo {
 
         // create the Consumer
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(properties);
+
+        // subscribe to a topic
+        consumer.subscribe(Arrays.asList(topic));
 
     }
 }
