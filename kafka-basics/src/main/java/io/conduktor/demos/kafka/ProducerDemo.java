@@ -1,5 +1,6 @@
 package io.conduktor.demos.kafka;
 
+import org.apache.kafka.common.serialization.StringSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,6 +20,9 @@ public class ProducerDemo {
         // connect to localhost
         properties.setProperty("bootstrap.servers", "127.0.0.1:9092");
 
+        // set producer properties - 바이트로 직렬화
+        properties.setProperty("key.serializer", StringSerializer.class.getName());
+        properties.setProperty("value.serializer", StringSerializer.class.getName());
 
     }
 }
