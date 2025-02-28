@@ -36,11 +36,15 @@ public class ConsumerDemoCooperative {
         properties.setProperty("key.deserializer", StringDeserializer.class.getName());
         properties.setProperty("value.deserializer", StringDeserializer.class.getName());
         properties.setProperty("group.id", groupId);
+
         // none, earliest, latest
         properties.setProperty("auto.offset.reset", "earliest");
+
         // partition-consumer rebalancing 전략 선택 -> CooperativeStickyAssignor best choice
         properties.setProperty("partition.assignment.strategy", CooperativeStickyAssignor.class.getName());
 
+        // consumer group 내 groupId를 통한 정적할당 -> partition-consumer 캐시없이 관계 유지 가능
+        // properties.setProperty("group.instance.id", "my-java-application-instance-1");
 
         // create the Consumer
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(properties);
