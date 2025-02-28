@@ -66,7 +66,8 @@ public class ConsumerDemoWithShutdown {
             // poll for data
             while (true) {
 
-                log.info("polling");
+                // 아래 실시간으로 polling하는 것을 보고 싶으면 코드 입력
+                //log.info("polling");
 
                 // kafka data 기다리는 시간 -> kafka 과부하 방지
                 ConsumerRecords<String,String> consumerRecords =
